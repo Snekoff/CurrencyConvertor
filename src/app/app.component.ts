@@ -12,13 +12,13 @@ export class AppComponent implements OnInit {
 
   rates: Rate | { usd:-1, eur:-1, uah:-1 };
   error: any;
-  uah: Currency | {sell: -1; buy: -1};
+  uah: Currency | {sell: 1; buy: 1};
   usd: Currency | {sell: -1; buy: -1};
   eur: Currency | {sell: -1; buy: -1};
 
   constructor(private httpGetService: HttpGetService) {
     this.rates = { usd:-1, eur:-1, uah:-1 }
-    this.uah = {sell: -1, buy: -1};
+    this.uah = {sell: 1, buy: 1};
     this.usd = {sell: -1, buy: -1};
     this.eur = {sell: -1, buy: -1};
   }
@@ -31,52 +31,43 @@ export class AppComponent implements OnInit {
   clear() {
     this.rates = { usd:-1, eur:-1, uah:-1 };
     this.error = undefined;
-    this.uah = {sell: -1, buy: -1};
+    this.uah = {sell: 1, buy: 1};
     this.usd = {sell: -1, buy: -1};
     this.eur = {sell: -1, buy: -1};
   }
 
   getCurrentRates() {
     // TODO remove it
-    /*return  this.currency = {
+    /*this.uah = {sell: 1, buy: 1};
+    this.usd = {sell: 39.5, buy: 39.9};
+    this.eur = {sell: 40, buy: 41};
+    return {
         usd: 36.9,
         eur: 36.8
       }*/
     this.httpGetService.getCurUAH()
       .subscribe({
       next: (data: any) => {
-        this.rates = {
-          usd: Math.round(1 / data.rates.USD * 1000) / 1000,
-          eur: Math.round(1 / data.rates.EUR * 1000) / 1000,
-          uah: Math.round(1 / data.rates.UAH * 1000) / 1000,
-        }
-        this.uah = {sell: 1, buy: this.rates.uah}
+        data.forEach((item: ratesOutput) => {
+          if(item.ccy !== "USD" && item.ccy !== "EUR") { }
+          else {
+            let key = item.ccy.toLowerCase();
+            // @ts-ignore
+            this[key] = {buy: item.buy, sell: item.sale}
+          }
+        })
       },
       error: error => {
         this.error = error
       }});
-
-    this.httpGetService.getCurUSD()
-      .subscribe({
-        next: (data: any) => this.usd = {
-          sell: Math.round( data.rates.USD * 1000) / 1000,
-          buy: this.rates.usd
-        },
-        error: error => {
-          this.error = error
-        }});
-
-    this.httpGetService.getCurEUR()
-      .subscribe({
-        next: (data: any) => this.eur = {
-          sell: Math.round( data.rates.EUR * 1000) / 1000,
-          buy: this.rates.eur
-        },
-        error: error => {
-          this.error = error
-        }});
   }
 
+}
+interface ratesOutput {
+  ccy: string;
+  base_ccy: string;
+  buy: number;
+  sale: number;
 }
 
 interface Currency {

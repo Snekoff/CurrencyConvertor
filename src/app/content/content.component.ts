@@ -19,14 +19,14 @@ export class Content implements OnInit {
   title = 'CurrencyConversion';
   currenciesNames = ["uah", "usd", "eur"];
 
-  onChange(isfirst: boolean) {
+  onChange(isFirst: boolean) {
     let first = document.querySelector("#firstCurrencyInput");
     let second = document.querySelector("#secondCurrencyInput");
     let firstSel = document.querySelector("#firstCurrencySelect");
     let secondSel = document.querySelector("#secondCurrencySelect");
     if (!first || !second || !firstSel || !secondSel) return -1;
 
-    if (isfirst) return this.onChangeFirst(first, second, firstSel, secondSel);
+    if (isFirst) return this.onChangeFirst(first, second, firstSel, secondSel);
     return this.onChangeSecond(first, second, firstSel, secondSel);
   }
 
@@ -41,10 +41,6 @@ export class Content implements OnInit {
   }
 
   onChangeFirstSetSecond(value: number, selectedTypeIndexFirst: number, selectedTypeIndexSecond: number) {
-    console.log("currencies");
-    console.log("uah", this.uah);
-    console.log("usd", this.usd);
-    console.log("eur", this.eur);
 
     let second = document.querySelector("#secondCurrencyInput");
     if (!second) return -1;
