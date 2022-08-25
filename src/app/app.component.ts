@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
           else {
             let key = item.ccy.toLowerCase();
             // @ts-ignore
-            this[key] = {buy: item.buy, sell: item.sale}
+            this[key] = {buy: +item.buy, sell: +item.sale}
           }
         })
       },
