@@ -1,0 +1,47 @@
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    right: 0;
+    height: 60px;
+    width: 1000px;
+    display: block;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  span {
+    position: absolute;
+    top: 20px;
+    left: 40%;
+    right: 0;
+    font-size: 150%;
+  }
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+  }
+
+  @media screen and (max-width: 575px) {
+
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <span>USD: {{usd}} EUR: {{eur}}</span>
+</div>

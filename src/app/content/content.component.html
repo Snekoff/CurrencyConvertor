@@ -1,0 +1,98 @@
+
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .content {
+    position: absolute;
+    left: 30%;
+    border-width: 5px;
+    border-color: black;
+    border-style: groove;
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    align-items: center;
+    height: 440px;
+    width: 1000px;
+  }
+
+  input[type="text"] {
+
+    height: 44px;
+    width: 100px;
+  }
+
+  select {
+    text-align: center;
+    height: 50px;
+    width: 100px;
+  }
+
+  label {
+
+  }
+
+  .Currency {
+    display: block;
+  }
+
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+  }
+
+  @media screen and (max-width: 575px) {
+
+  }
+</style>
+
+
+
+<div class="content">
+  <div class="first Currency">
+    <label for="firstCurrencyInput">Input currency and amount</label>
+    <input type="text" value="{{ uah.buy }}" id="firstCurrencyInput" (input)="onChange(true)">
+    <select id="firstCurrencySelect" (input)="onChange(true)">
+      <option value="uah">uah</option>
+      <option value="usd" selected>usd</option>
+      <option value="eur">eur</option>
+    </select>
+  </div>
+
+  <div class="second Currency">
+    <label for="secondCurrencySelect">Input currency and amount</label>
+    <input type="text" value="{{ usd.sell }}" id="secondCurrencyInput" (input)="onChange(false)">
+    <select id="secondCurrencySelect" (input)="onChange(true)">
+      <option value="uah" selected>uah</option>
+      <option value="usd">usd</option>
+      <option value="eur">eur</option>
+    </select>
+  </div>
+</div>
+
+<script type="module">
+  //let that = this;
+  let first = document.querySelector("#firstCurrencyInput");
+  let second = document.querySelector("#secondCurrencyInput");
+  let firstSel = document.querySelector("#firstCurrencyInput");
+  let secondSel = document.querySelector("#secondCurrencySelect");
+  first.addEventListener("input", () => {
+    console.log("1");
+    let firstIndex = this.findIndex(firstSel.value);
+    let secondIndex = this.findIndex(secondSel.value);
+    this.onChangeFirstSetSecond(first.value, firstIndex, secondIndex);
+  })
+</script>
+
+
