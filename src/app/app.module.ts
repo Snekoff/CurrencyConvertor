@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { Content } from './content/content.component';
-import { HttpGetService } from "./http-get.service";
+import { CurrencyService } from "./currency.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { HttpGetService } from "./http-get.service";
     BrowserModule,
     HttpClientModule
   ],
-  providers: [HttpGetService],
+  providers: [CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

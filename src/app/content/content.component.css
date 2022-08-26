@@ -1,0 +1,81 @@
+.content {
+
+  left: 20%;
+  align-items: center;
+  box-sizing: border-box;
+  color: rgb(45, 45, 45);
+  display: flex;
+  flex-direction: row;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  height: 300px;
+  width: 60%;
+  line-height: 16px;
+  margin-bottom: 16px;
+  margin-top: 59px;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-align: center;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0;
+
+}
+
+.convertor {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="text"] {
+  height: 45px;
+  width: 61%;
+}
+
+select {
+  text-align: center;
+  height: 50px;
+  width: 64.5%;
+}
+
+label, input, select {
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0;
+  font-size: 18px;
+  margin-top: 7%;
+}
+
+.Currency {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  margin-bottom: 4%;
+  max-width: 64.5%;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 0 10px;
+}
+
+
+
+/* Responsive Styles */
+@media screen and (max-width: 769px) {
+  .convertor {
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .convertor {
+    left: 5.5%;
+  }
+}

@@ -7,6 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  // must be widget
+  // functional programming style
+
   constructor() { }
 
   ngOnInit(): void {

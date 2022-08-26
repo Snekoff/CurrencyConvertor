@@ -66,10 +66,6 @@ export class Content implements OnInit {
   }
 
   onChangeSecondSetFirst(value: number, selectedTypeIndexFirst: number, selectedTypeIndexSecond: number) {
-    console.log("currencies");
-    console.log("uah", this.uah);
-    console.log("usd", this.usd);
-    console.log("eur", this.eur);
 
     let second = document.querySelector("#firstCurrencyInput");
     if (!second) return -1;
