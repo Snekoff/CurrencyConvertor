@@ -1,3 +1,3 @@
 
-<app-header [usd]="usd.buy" [eur]="eur.buy"></app-header>
-<app-content [usd]="usd" [eur]="eur" [uah]="uah"></app-content>
+<app-header [usd]="usd.sell" [eur]="eur.sell"></app-header>
+<app-content (usdChange)="addCurrencyUsd($event)" (eurChange)="addCurrencyEur($event)"></app-content>

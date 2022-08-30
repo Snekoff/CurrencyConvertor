@@ -1,0 +1,9 @@
+.example-form-field {
+  width: 64.5%;
+}
+
+input[type="text"] {
+  color: white;
+  height: 45px;
+  width: 61%;
+}

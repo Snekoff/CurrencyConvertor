@@ -2,38 +2,17 @@
 <div class="content">
   <div class="convertor">
     <div class="first Currency">
-      <label for="firstCurrencyInput">Продажа</label>
-      <input type="text" value="{{ uah.buy }}" id="firstCurrencyInput" (input)="onChange(true)">
-      <select id="firstCurrencySelect" (input)="onChange(true)">
-        <option value="uah">uah</option>
-        <option value="usd" selected>usd</option>
-        <option value="eur">eur</option>
-      </select>
+      <label for="firstCurrencyInput">Продаж</label>
+      <input-clearable-example [value]=uah.buy.toString() id="firstCurrencyInput" #firstCurrencyInput (input)="onChange(true)"></input-clearable-example>
+      <app-select-overview id="firstCurrencySelect" #firstCurrencySelect [func]="onChange" ></app-select-overview>
     </div>
 
     <div class="second Currency">
       <label for="secondCurrencyInput">Купівля</label>
-      <input type="text" value="{{ usd.sell }}" id="secondCurrencyInput" (input)="onChange(false)">
-      <select id="secondCurrencySelect" (input)="onChange(true)">
-        <option value="uah" selected>uah</option>
-        <option value="usd">usd</option>
-        <option value="eur">eur</option>
-      </select>
+      <input-clearable-example [value]=usd.sell.toString() id="secondCurrencyInput"#secondCurrencyInput (input)="onChange(false)"></input-clearable-example>
+      <app-select-overview id="secondCurrencySelect" #secondCurrencySelect [func]="onChange"></app-select-overview>
     </div>
   </div>
 </div>
-
-<script type="module">
-  let first = document.querySelector("#firstCurrencyInput");
-  let second = document.querySelector("#secondCurrencyInput");
-  let firstSel = document.querySelector("#firstCurrencyInput");
-  let secondSel = document.querySelector("#secondCurrencySelect");
-  first.addEventListener("input", () => {
-    console.log("1");
-    let firstIndex = this.findIndex(firstSel.value);
-    let secondIndex = this.findIndex(secondSel.value);
-    this.onChangeFirstSetSecond(first.value, firstIndex, secondIndex);
-  })
-</script>
 
 

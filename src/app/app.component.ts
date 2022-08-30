@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Rate, CurrencyService} from "./currency.service";
+import { Component } from '@angular/core';
+import {Currency} from "./content/content.component"
 
-interface Currency {
-  sell: number;
-  buy: number;
-}
+
 
 @Component({
   selector: 'app-root',
@@ -12,49 +9,20 @@ interface Currency {
   styleUrls: ['./app.component.css'],
   providers: []
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'AppComponent';
-
-
-  error: any;
-  uah: Currency = {sell: 1, buy: 1};
   usd: Currency = {sell: -1, buy: -1};
   eur: Currency = {sell: -1, buy: -1};
 
-  constructor(private httpGetService: CurrencyService) {
+  constructor() {
   }
 
-  ngOnInit(): void {
-    this.getCurrentRates();
+  addCurrencyUsd(newCurrency: Currency) {
+    this.usd = newCurrency;
   }
 
-  clear() {
-    this.error = undefined;
-    this.uah = {sell: 1, buy: 1};
-    this.usd = {sell: -1, buy: -1};
-    this.eur = {sell: -1, buy: -1};
-  }
-
-  getCurrentRates() {
-    // TODO remove it
-    /*this.uah = {sell: 1, buy: 1};
-    this.usd = {sell: 39.5, buy: 39.9};
-    this.eur = {sell: 40, buy: 41};
-    return 0*/
-    this.httpGetService.getCurrencyUAH()
-      .subscribe({
-      next: (data: Array<Rate>) => {
-        data.forEach((item: Rate) => {
-          if(item.ccy === "USD" || item.ccy === "EUR") {
-            let key = item.ccy.toLowerCase();
-            // @ts-ignore
-            this[key] = {buy: +item.buy, sell: +item.sale};
-          }
-        })
-      },
-      error: error => {
-        this.error = error
-      }});
+  addCurrencyEur(newCurrency: Currency) {
+    this.eur = newCurrency;
   }
 
 }

@@ -1,5 +1,5 @@
 .content {
-
+  background: #333333;
   left: 20%;
   align-items: center;
   box-sizing: border-box;
@@ -43,9 +43,11 @@ select {
 }
 
 label, input, select {
+  background: #333333;
+  color: white;
   display: block;
   border-radius: 2px;
-  box-shadow: 0 1px 2px 0;
+  box-shadow: 0 1px 2px 0 #7b1fa2;
   font-size: 18px;
   margin-top: 7%;
 }

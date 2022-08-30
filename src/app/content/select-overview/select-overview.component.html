@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill" >
+  <mat-label>Оберіть валюту</mat-label>
+  <mat-select [(value)]="selected" (selectionChange)="func(true)" >
+    <mat-option value="uah" >UAH</mat-option>
+    <mat-option value="usd" >USD</mat-option>
+    <mat-option value="eur" >EUR</mat-option>
+  </mat-select>
+</mat-form-field>
