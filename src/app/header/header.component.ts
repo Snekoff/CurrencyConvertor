@@ -1,21 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-
-  // must be widget
-  // functional programming style
+export class HeaderComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  @Input() usd = -1;
-  @Input() eur = -1;
+  @Input() usd : number = -1;
+  @Input() eur : number = -1;
 
 }

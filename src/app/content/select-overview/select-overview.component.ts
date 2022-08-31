@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class SelectOverviewComponent {
   @Input() func : any;
-  selected: string = "usd"
+  selected: string = "uah"
 
   currencies: Array<string> = [
     'uah',

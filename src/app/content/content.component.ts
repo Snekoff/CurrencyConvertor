@@ -1,8 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import {CurrencyService, Rate} from "../currency.service";
-import {first} from "rxjs";
-import {InputClearableComponent} from "./input-clearable/input-clearable.component"
-import {SelectOverviewComponent} from "./select-overview/select-overview.component"
 
 export interface Currency {
   sell: number;
@@ -16,13 +13,12 @@ export interface Currency {
 })
 export class Content implements OnInit {
 
-
   title = 'Content';
   currenciesNames = ["uah", "usd", "eur"];
 
-  @Output() uahChange = new EventEmitter<Currency>;// = {sell: 1, buy: 1};
-  @Output() usdChange = new EventEmitter<Currency>;// = {sell: -1, buy: -1};
-  @Output() eurChange = new EventEmitter<Currency>;// = {sell: -1, buy: -1};
+  @Output() uahChange = new EventEmitter<Currency>;
+  @Output() usdChange = new EventEmitter<Currency>;
+  @Output() eurChange = new EventEmitter<Currency>;
 
   error: any;
   uah: Currency = {sell: 1, buy: 1};
@@ -61,21 +57,13 @@ export class Content implements OnInit {
   }
 
   getCurrentRates() {
-    // TODO remove it
-    this.uah = {sell: 1, buy: 1};
-    this.usd = {buy: 39.4, sell: 39.9};
-    this.eur = {buy: 39.5, sell: 40.1};
-    this.addUah();
-    this.addUsd();
-    this.addEur();
-    return 0
     this.httpGetService.getCurrencyUAH()
       .subscribe({
         next: (data: Array<Rate>) => {
           data.forEach((item: Rate) => {
-            if(item.ccy === "USD") {
+            if (item.ccy === "USD") {
               this.usd = {buy: +item.buy, sell: +item.sale};
-            } else if(item.ccy === "EUR") {
+            } else if (item.ccy === "EUR") {
               this.eur = {buy: +item.buy, sell: +item.sale};
             }
           })
@@ -85,7 +73,8 @@ export class Content implements OnInit {
         },
         error: error => {
           this.error = error
-        }});
+        }
+      });
   }
 
   onChange = (isFirst: boolean) => {
@@ -104,32 +93,28 @@ export class Content implements OnInit {
   }
 
   onChangeFirstSetSecond(value: number, selectedTypeIndexFirst: number, selectedTypeIndexSecond: number) {
-    if (!this.secondCurrencyInput) return -1;
-    let var1Name: string = this.currenciesNames[selectedTypeIndexFirst];
-    let var2Name: string = this.currenciesNames[selectedTypeIndexSecond];
-    // @ts-ignore
-    let mul = this[var1Name].buy / this[var2Name].sell;
-    // @ts-ignore
-    if (var2Name === "uah") mul = this[var1Name].sell
+    let currencyValues = [this.uah, this.usd, this.eur];
+    // for usd or eur currencies must calculate modifier because it is easier than make get requests for each separately
+    let mul = currencyValues[selectedTypeIndexFirst].buy / currencyValues[selectedTypeIndexSecond].sell;
+    // uah
+    if (selectedTypeIndexSecond === 0) mul = currencyValues[selectedTypeIndexFirst].buy
+
     this.secondCurrencyInput.value = Math.round(value * mul * 1000) / 1000;
     return 0;
   }
 
   onChangeSecond() {
-
-    if (!this.firstCurrencyInput || !this.secondCurrencyInput || !this.firstCurrencySelect || !this.secondCurrencySelect) return -1;
     let firstIndex = this.findIndex(this.firstCurrencySelect.selected);
     let secondIndex = this.findIndex(this.secondCurrencySelect.selected);
-    this.onChangeSecondSetFirst(+this.secondCurrencyInput.value, secondIndex, firstIndex);
+
+    this.onChangeSecondSetFirst(+this.secondCurrencyInput.value, firstIndex, secondIndex);
     return 0;
   }
 
   onChangeSecondSetFirst(value: number, selectedTypeIndexFirst: number, selectedTypeIndexSecond: number) {
-    if (!this.firstCurrencyInput) return -1;
-    let var1Name: string = this.currenciesNames[selectedTypeIndexFirst];
-    let var2Name: string = this.currenciesNames[selectedTypeIndexSecond];
-    // @ts-ignore
-    let mul: number = this[var1Name].sell / this[var2Name].buy;
+    let currencyValues = [this.uah, this.usd, this.eur];
+    // for usd or eur currencies must calculate modifier because it is easier than make get requests for each separately
+    let mul: number = currencyValues[selectedTypeIndexSecond].sell / currencyValues[selectedTypeIndexFirst].buy;
     this.firstCurrencyInput.value = Math.round(value * mul * 1000) / 1000;
     return 0;
   }
