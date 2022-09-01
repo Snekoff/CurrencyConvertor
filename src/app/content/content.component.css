@@ -1,6 +1,6 @@
 .content {
   background: #333333;
-  left: 20%;
+  margin-left: 20%;
   align-items: center;
   box-sizing: border-box;
   color: rgb(45, 45, 45);
@@ -8,74 +8,87 @@
   flex-direction: row;
   font-family: Roboto, sans-serif;
   font-size: 14px;
-  height: 300px;
-  width: 60%;
+  height: 400px;
+  width: 60vw;
   line-height: 16px;
   margin-bottom: 16px;
   margin-top: 59px;
   position: relative;
-  -webkit-text-size-adjust: 100%;
-  -webkit-box-align: center;
+
   border-radius: 2px;
   box-shadow: 0 1px 2px 0;
 
 }
 
 .convertor {
+  width: 60vw;
   position: relative;
   display: flex;
   flex-direction: row;
   font-family: Roboto, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   margin-left: auto;
   margin-right: auto;
 }
 
-input[type="text"] {
-  height: 45px;
-  width: 61%;
-}
-
-select {
-  text-align: center;
-  height: 50px;
-  width: 64.5%;
-}
-
-label, input, select {
-  background: #333333;
-  color: white;
-  display: block;
-  border-radius: 2px;
-  box-shadow: 0 1px 2px 0 #7b1fa2;
-  font-size: 18px;
-  margin-top: 7%;
-}
-
 .Currency {
-  display: block;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
   position: relative;
   margin-left: auto;
   margin-right: auto;
 }
 
 label {
-  margin-bottom: 4%;
-  max-width: 64.5%;
+  background: #333333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 #7b1fa2;
   font-size: 18px;
+  margin: 0 auto 7%;
+  width: 64.5%;
   text-align: center;
   padding: 10px 0 10px;
 }
 
+app-select-overview, input-clearable-example {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Responsive Styles */
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1440px) {
   .convertor {
-    left: 10%;
+
   }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 769px) {
   .convertor {
-    left: 5.5%;
+
+  }
+
+  .Currency {
+    width: 40%;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .convertor {
+    left: 8%;
+    font-size: 12px;
+  }
+
+  .Currency {
+    width: 35%;
+    margin-left: 0;
+  }
+}
+
+
+
+

@@ -1,5 +1,8 @@
 .example-form-field {
-  width: 64.5%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 0;
 }
 
 input[type="text"] {

@@ -1,6 +1,10 @@
 mat-form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 0;
   background: #333333;
   text-align: center;
-  height: 50px;
-  width: 64.5%;
+  height: 90px;
+  width: 80%;
+
 }
